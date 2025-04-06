@@ -83,6 +83,7 @@ def return_figures():
                 paper_bgcolor='rgba(0,0,0,0)',
                 plot_bgcolor='rgba(0,0,0,0)',   # chart area background
                 #margin=dict(t=80, l=40, r=40, b=60),
+                autosize=True
                 )
 
 # Chart 2 - Type of weapons launched
@@ -122,6 +123,7 @@ def return_figures():
         paper_bgcolor='rgba(0,0,0,0)',
         plot_bgcolor='rgba(0,0,0,0)',   # chart area background
         #margin=dict(t=80, l=40, r=40, b=60),
+        autosize=True
 )
 
 
@@ -147,6 +149,7 @@ def return_figures():
                 paper_bgcolor='rgba(0,0,0,0)',
                 plot_bgcolor='rgba(0,0,0,0)',   # chart area background
                 #margin=dict(t=80, l=40, r=40, b=60)
+                autosize=True
                        )
 
 # Attack targets
@@ -196,6 +199,7 @@ def return_figures():
                 paper_bgcolor='rgba(0,0,0,0)',
                 plot_bgcolor='rgba(0,0,0,0)',   # chart area background
                 #margin=dict(t=80, l=40, r=40, b=60)
+                autosize=True
                 )
 
 
@@ -215,7 +219,7 @@ def return_figures():
     layout_five = dict(
     title=dict(
         text='Approximate cost to the Russian taxpayer of <br> aerial attacks launched against Ukraine',
-        x=0.5,
+        x=0.25,
         xanchor='center'
     ),
     xaxis=dict(
@@ -230,6 +234,7 @@ def return_figures():
     paper_bgcolor='rgba(0,0,0,0)',
     plot_bgcolor='rgba(0,0,0,0)',
     #margin=dict(t=80, l=40, r=40, b=60)
+    autosize=True
     )
 
     # append all charts to the figures list
