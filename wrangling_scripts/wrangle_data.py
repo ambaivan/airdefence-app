@@ -212,15 +212,26 @@ def return_figures():
       )
     )
 
-
     layout_five = dict(
-                title = dict('Approximate cost to the russian taxpayer of <br> aerial attacks launched against Ukraine'), x=0.5, xanchor='center'),
-                xaxis = dict(title = 'Year', tickvals=cost_of_war['year'].tolist(), ticktext=['2022','2023','2024', '2025']),
-                yaxis = dict(title = 'cost in mln USD', tickformat=','),
-                paper_bgcolor='rgba(0,0,0,0)',
-                plot_bgcolor='rgba(0,0,0,0)',   # chart area background
-                margin=dict(t=80, l=40, r=40, b=60),
-                )
+    title=dict(
+        text='Approximate cost to the Russian taxpayer of <br> aerial attacks launched against Ukraine',
+        x=0.5,
+        xanchor='center'
+    ),
+    xaxis=dict(
+        title='Year',
+        tickvals=cost_of_war['year'].tolist(),
+        ticktext=['2022', '2023', '2024', '2025']
+    ),
+    yaxis=dict(
+        title='Cost in mln USD',
+        tickformat=','
+    ),
+    paper_bgcolor='rgba(0,0,0,0)',
+    plot_bgcolor='rgba(0,0,0,0)',
+    margin=dict(t=80, l=40, r=40, b=60)
+    )
+
     # append all charts to the figures list
     figures = []
     figures.append(dict(data=graph_one, layout=layout_one))
