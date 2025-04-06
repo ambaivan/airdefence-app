@@ -1,22 +1,17 @@
 # Use the official lightweight Python image.
-FROM python:3.11-slim
+FROM python:3.10-slim
 
-# Set environment variables
-ENV PYTHONDONTWRITEBYTECODE=1
-ENV PYTHONUNBUFFERED=1
-
-# Set work directory
+# Set working directory
 WORKDIR /app
 
+# Copy files
+COPY . /app
+
 # Install dependencies
-COPY requirements.txt .
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy project
-COPY . .
-
-# Expose the port the app runs on
+# Tell Cloud Run this is a web server
 EXPOSE 8080
 
-# Run the app
+# Start your app (change to your filename if needed)
 CMD ["python", "myapp.py"]
