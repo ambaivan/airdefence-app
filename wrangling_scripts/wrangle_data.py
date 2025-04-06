@@ -82,7 +82,7 @@ def return_figures():
                 yaxis = dict(title = '# of attacks launched'),
                 paper_bgcolor='rgba(0,0,0,0)',
                 plot_bgcolor='rgba(0,0,0,0)',   # chart area background
-                margin=dict(t=80, l=40, r=40, b=60),
+                #margin=dict(t=80, l=40, r=40, b=60),
                 )
 
 # Chart 2 - Type of weapons launched
@@ -121,7 +121,7 @@ def return_figures():
                ticktext=['100', '1,000', '5,000', '10,000', '20,000', '30,000']),
         paper_bgcolor='rgba(0,0,0,0)',
         plot_bgcolor='rgba(0,0,0,0)',   # chart area background
-        margin=dict(t=80, l=40, r=40, b=60),
+        #margin=dict(t=80, l=40, r=40, b=60),
 )
 
 
@@ -146,7 +146,7 @@ def return_figures():
                 yaxis = dict(title = '% of destroyed objects', range=[0,1],),
                 paper_bgcolor='rgba(0,0,0,0)',
                 plot_bgcolor='rgba(0,0,0,0)',   # chart area background
-                margin=dict(t=80, l=40, r=40, b=60)
+                #margin=dict(t=80, l=40, r=40, b=60)
                        )
 
 # Attack targets
@@ -195,7 +195,7 @@ def return_figures():
                 yaxis = dict(title = 'Number of attacks'),
                 paper_bgcolor='rgba(0,0,0,0)',
                 plot_bgcolor='rgba(0,0,0,0)',   # chart area background
-                margin=dict(t=80, l=40, r=40, b=60)
+                #margin=dict(t=80, l=40, r=40, b=60)
                 )
 
 
@@ -229,7 +229,7 @@ def return_figures():
     ),
     paper_bgcolor='rgba(0,0,0,0)',
     plot_bgcolor='rgba(0,0,0,0)',
-    margin=dict(t=80, l=40, r=40, b=60)
+    #margin=dict(t=80, l=40, r=40, b=60)
     )
 
     # append all charts to the figures list
