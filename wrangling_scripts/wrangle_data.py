@@ -45,7 +45,10 @@ def prepdata(dataset='data/missile_attacks_daily.csv'):
     "Other models":0.05}
     df['weapon_price'] = df['model_group'].map(weapon_prices)
     df['cost_of_attack'] = df['weapon_price'] * df['launched']
-    df['year'] = pd.to_datetime(df['time_start'], errors='coerce').dt.year
+    #df['year']=pd.to_datetime(df['time_start']).dt.year
+    df['year'] = pd.to_datetime(df['time_start'], errors='coerce').apply(lambda x: x.year if pd.notnull(x) else None)
+
+
 
     return df
 
@@ -77,13 +80,11 @@ def return_figures():
       )
     )
 
-    layout_one = dict(title = dict(text='Number of aerial attacks', x=0.5, xanchor='center'),
+    layout_one = dict(title = 'Number of aerial attacks',
                 xaxis = dict(title = 'Year'),
                 yaxis = dict(title = '# of attacks launched'),
                 paper_bgcolor='rgba(0,0,0,0)',
                 plot_bgcolor='rgba(0,0,0,0)',   # chart area background
-                #margin=dict(t=80, l=40, r=40, b=60),
-                autosize=True
                 )
 
 # Chart 2 - Type of weapons launched
@@ -114,16 +115,14 @@ def return_figures():
     )
 
     layout_two = dict(
-        title=dict(text='Weapons launched by weapon type per year', x=0.5, xanchor='center'),
+        title='Weapons launched by weapon type',
         barmode='stack',  # <== Important for stacked bars
         xaxis=dict(title='Year'),
-        yaxis=dict(title='Quantity launched', type='log', tickfont=dict(size=9),
+        yaxis=dict(title='Quantity launched', tickfont=dict(size=9),
                tickvals=[100, 1000, 5000, 10000, 20000, 30000],
                ticktext=['100', '1,000', '5,000', '10,000', '20,000', '30,000']),
         paper_bgcolor='rgba(0,0,0,0)',
         plot_bgcolor='rgba(0,0,0,0)',   # chart area background
-        #margin=dict(t=80, l=40, r=40, b=60),
-        autosize=True
 )
 
 
@@ -143,13 +142,11 @@ def return_figures():
       )
     )
 
-    layout_three = dict(title = dict( text='Air deffence effectiveness 2022-2025 <br> (as share of destroyed targets)', x=0.5, xanchor='center'),
+    layout_three = dict(title = 'Air deffence effectiveness 2022-2025 <br> (as share of destroyed targets)',
                 xaxis = dict(title = 'Year'),
                 yaxis = dict(title = '% of destroyed objects', range=[0,1],),
                 paper_bgcolor='rgba(0,0,0,0)',
                 plot_bgcolor='rgba(0,0,0,0)',   # chart area background
-                #margin=dict(t=80, l=40, r=40, b=60)
-                autosize=True
                        )
 
 # Attack targets
@@ -193,13 +190,11 @@ def return_figures():
             marker=dict(color=color))
         )
 
-    layout_four = dict(title = dict( text='Attacks on Ukraine biggest cities', x=0.5, xanchor='center'),
+    layout_four = dict(title = 'Attacks on Ukraine biggest cities',
                 xaxis = dict(title = 'Year'),
                 yaxis = dict(title = 'Number of attacks'),
                 paper_bgcolor='rgba(0,0,0,0)',
                 plot_bgcolor='rgba(0,0,0,0)',   # chart area background
-                #margin=dict(t=80, l=40, r=40, b=60)
-                autosize=True
                 )
 
 
@@ -216,27 +211,12 @@ def return_figures():
       )
     )
 
-    layout_five = dict(
-    title=dict(
-        text='Approximate cost to the Russian taxpayer of <br> aerial attacks launched against Ukraine',
-        x=0.25,
-        xanchor='center'
-    ),
-    xaxis=dict(
-        title='Year',
-        tickvals=cost_of_war['year'].tolist(),
-        ticktext=['2022', '2023', '2024', '2025']
-    ),
-    yaxis=dict(
-        title='Cost in mln USD',
-        tickformat=','
-    ),
-    paper_bgcolor='rgba(0,0,0,0)',
-    plot_bgcolor='rgba(0,0,0,0)',
-    #margin=dict(t=80, l=40, r=40, b=60)
-    autosize=True
-    )
-
+    layout_five = dict(title = 'Approx. cost to the russian taxpayer of <br> aerial attacks launched against Ukraine',
+                xaxis = dict(title = 'Year', tickvals=cost_of_war['year'].tolist(), ticktext=cost_of_war['year'].astype(str).tolist()),
+                yaxis = dict(title = 'cost in mln USD', tickformat=',',),
+                paper_bgcolor='rgba(0,0,0,0)',
+                plot_bgcolor='rgba(0,0,0,0)',   # chart area background
+                )
     # append all charts to the figures list
     figures = []
     figures.append(dict(data=graph_one, layout=layout_one))
