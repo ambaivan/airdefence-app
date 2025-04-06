@@ -45,7 +45,7 @@ def prepdata(dataset='data/missile_attacks_daily.csv'):
     "Other models":0.05}
     df['weapon_price'] = df['model_group'].map(weapon_prices)
     df['cost_of_attack'] = df['weapon_price'] * df['launched']
-    df['year']=pd.to_datetime(df['time_start']).dt.year
+    df['year'] = pd.to_datetime(df['time_start'], errors='coerce').dt.year
 
     return df
 
